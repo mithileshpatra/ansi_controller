@@ -1,0 +1,16 @@
+- hosts: group2
+  tasks:
+  - name: installing java
+    yum: name=java state=present
+  - name: download tomcat packages
+    get_url:
+      url: http://apachemirror.wuchna.com/tomcat/tomcat-9/v9.0.29/bin/apache-tomcat-9.0.29.tar.gz
+      dest: /opt/apache-tomcat-9.0.29.tar.gz
+  - name: extracting the tar file
+    command: tar -xzvf /opt/apache-tomcat-9.0.29.tar.gz -C /opt/ creates=/opt/apache-tomcat-9.0.29
+  - name: start tomcat service
+    command: /opt/apache-tomcat-9.0.29/bin/startup.sh
+  - name: deploy the application
+    get_url:
+      url: https://www.oracle.com/webfolder/technetwork/tutorials/obe/fmw/wls/12c/12_1_3/03/apps/benefits.war
+      dest: /opt/apache-tomcat-9.0.29/webapps/benefits.war

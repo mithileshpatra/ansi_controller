@@ -1,0 +1,7 @@
+---
+- hosts: all
+  tasks:
+  - name: copying the creds file
+    copy:
+      src: /etc/ansible/creds.conf
+      dest: /tmp/creds.conf

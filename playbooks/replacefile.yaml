@@ -1,0 +1,8 @@
+---
+- hosts: all
+  tasks:
+  - name: replace string
+    replace:
+      path: /tmp/index.html
+      regexp: 'boys'
+      replace: 'girls'

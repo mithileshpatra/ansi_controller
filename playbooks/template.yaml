@@ -1,0 +1,8 @@
+---
+- hosts: all
+  tasks:
+  - name: Template a file 
+    template:
+      src: xyz.j2
+      dest: /tmp/xyz.conf
+

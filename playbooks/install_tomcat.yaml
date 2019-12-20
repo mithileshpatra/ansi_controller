@@ -1,0 +1,12 @@
+---
+- hosts: group2
+  tasks:
+  - name: installing tomcat
+    yum: name=tomcat state=present
+  - name: start service tomcat
+    service: name=tomcat state=started
+  - name: download benefits.war and copying it
+    get_url:
+          url: https://www.oracle.com/webfolder/technetwork/tutorials/obe/fmw/wls/12c/03-DeployApps/files/benefits.war
+          dest: /usr/share/tomcat/webapps/benefits.war
+

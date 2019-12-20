@@ -1,0 +1,16 @@
+---
+- hosts: group2
+  tasks:
+  - name: installing java
+    yum: name=java state=present
+  - name: Download sonarqube
+    get_url: 
+      url: https://binaries.sonarsource.com/Distribution/sonarqube/sonarqube-8.0.zip	
+      dest: /opt
+  - name: unzip sonarfile
+    unarchive:
+      src: /opt/sonarqube-8.0.zip
+      dest: /opt
+      remote_src: yes
+  - name: starting sonarqube
+    command: /opt/sonarqube-8.0/bin/linux-x86-64/sonar.sh start

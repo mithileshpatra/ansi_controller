@@ -1,0 +1,14 @@
+---
+- hosts: all
+  vars:
+    - server_port: 8080
+  tasks:
+    - name: install nginx
+      yum: pkg=nginx state=present
+    - name: Insert Index Page
+      template:
+        src: index.html
+        dest: /usr/share/nginx/html/index.html
+  handlers:
+    - name: restart nginx
+      service: name=nginx state=restarted
